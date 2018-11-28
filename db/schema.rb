@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 2018_11_21_212952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,30 @@ ActiveRecord::Schema.define(version: 2) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_examples_on_user_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "type_of_trip"
+    t.string "hotel"
+    t.string "rental_car"
+    t.string "events_and_parks"
+    t.float "ticketprice"
+    t.integer "ticketamount"
+    t.float "miles_to_drive"
+    t.float "miles_per_gallon"
+    t.integer "hotelnights"
+    t.float "nightprice"
+    t.integer "rooms"
+    t.integer "rentaldays"
+    t.float "rentalprice"
+    t.float "eventprice"
+    t.integer "eventpeople"
+    t.integer "tripdays"
+    t.float "extrapurchase"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +58,5 @@ ActiveRecord::Schema.define(version: 2) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "trips", "users"
 end
